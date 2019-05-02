@@ -23,9 +23,9 @@ int main(void)
 //	printf("data->width: %d\tdata->flags: %c\tdata->precision: %d\tdata->length: %i\tdata->specifier: %c\tdata->result: %s\n", \
 	data->width, data->flags, data->precision, data->length, data->specifier, data->result);
 
-	ft_value = ft_printf("%0#15.5X", 12587499);
+	ft_value = ft_printf("hello ca%----4c %1c va %10c%-c ??", '\0', '\n', (char)564, 0);
 	printf("\tvalue: %d\n\n", ft_value);
-	printf_value = printf("%0#15.5X", 12587499);
+	printf_value = printf("hello ca%----4c %1c va %10c%-c ??", '\0', '\n', (char)564, 0);
 	printf("\tvalue: %d\n\n", printf_value);
 //	while(1);
 }

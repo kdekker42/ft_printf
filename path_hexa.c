@@ -78,28 +78,33 @@ int *zero_value)
 	return (tmpstring);
 }
 
-static void		hexa_path_norminette(t_flags *data, int zero_value)
+static void		hexa_path_norminette(t_flags *data)
 {
-	if (data->precision == -12 && zero_value == 1)
-		ft_strclr(data->result);
-	if (data->precision != 0)
-		add_precision(data);
-	if ((data->flags & 16) == 16 && zero_value == 0)
+	if ((data->flags & 1) == 1)
 	{
-		if ((data->flags & 1) == 1)
+		if ((data->flags & 16) == 16 && ((data->precision == -12 || \
+		data->precision == 0) || (data->precision > 0 && \
+		data->precision < data->width)))
 		{
-			data->width = (data->width >= 2) ? data->width - 2 : data->width;
+			data->flags -= 1;
+			data->result = ft_strnjoin_free(make_str_to_add(), \
+			data->result);
 			data->result = make_width(data);
-			data->result = ft_strnjoin_free(make_str_to_add(), data->result);
 		}
 		else
 		{
-			data->result = ft_strnjoin_free(make_str_to_add(), data->result);
+			data->width = (data->width >= 2) ? data->width - 2 \
+			: data->width;
 			data->result = make_width(data);
+			data->result = ft_strnjoin_free(make_str_to_add(), \
+			data->result);
 		}
 	}
 	else
+	{
+		data->result = ft_strnjoin_free(make_str_to_add(), data->result);
 		data->result = make_width(data);
+	}
 }
 
 void			hexa_path(t_flags *data, va_list list)
@@ -116,5 +121,12 @@ void			hexa_path(t_flags *data, va_list list)
 	tmpstring = ft_change_base(tmpstring, 10, 16, 1);
 	free(data->result);
 	data->result = tmpstring;
-	hexa_path_norminette(data, zero_value);
+	if (data->precision == -12 && zero_value == 1)
+		ft_strclr(data->result);
+	if (data->precision != 0)
+		add_precision(data);
+	if ((data->flags & 16) == 16 && zero_value == 0)
+		hexa_path_norminette(data);
+	else
+		data->result = make_width(data);
 }

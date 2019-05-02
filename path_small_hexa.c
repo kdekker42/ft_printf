@@ -82,9 +82,23 @@ static void		flags_hexa(t_flags *data)
 {
 	if ((data->flags & 1) == 1)
 	{
-		data->width = (data->width >= 2) ? data->width - 2 : data->width;
-		data->result = make_width(data);
-		data->result = ft_strnjoin_free(make_str_to_add(), data->result);
+		if ((data->flags & 16) == 16 && ((data->precision == -12 || \
+		data->precision == 0) || (data->precision > 0 && \
+		data->precision < data->width)))
+		{
+			data->flags -= 1;
+			data->result = ft_strnjoin_free(make_str_to_add(), \
+			data->result);
+			data->result = make_width(data);
+		}
+		else
+		{
+			data->width = (data->width >= 2) ? data->width - 2 \
+			: data->width;
+			data->result = make_width(data);
+			data->result = ft_strnjoin_free(make_str_to_add(), \
+			data->result);
+		}
 	}
 	else
 	{

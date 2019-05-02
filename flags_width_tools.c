@@ -16,7 +16,7 @@ static void		width_path_normal(t_flags *data, char *rtn)
 {
 	if ((data->flags & 4) == 4)
 		width_min_path(data->result, data->width, rtn);
-	else if ((data->flags & 1) == 1 && data->precision < 0)
+	else if ((data->flags & 1) == 1 && data->precision < 0 && data->result[0] != '\0')
 		width_zero_path(data->result, data->width, rtn);
 	else
 		width_nothing(data->result, data->width, rtn);
@@ -62,6 +62,7 @@ char			*make_width(t_flags *data)
 			width_path_flags(data, rtn);
 		else
 		{
+
 			if (data->specifier == 's')
 				width_path_string(data, rtn);
 			else
