@@ -6,22 +6,22 @@
 /*   By: rcorke <rcorke@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/21 16:10:15 by kpereira       #+#    #+#                */
-/*   Updated: 2019/05/02 17:47:29 by rcorke        ########   odam.nl         */
+/*   Updated: 2019/05/03 20:58:54 by rcorke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	reset_j(int *j, int *rtn, char *buf)
+static void	reset_j(int *j, int *rtn, char *buf, int *buffer_length)
 {
-	*rtn += print_buf(buf);
+	*rtn += print_buf(buf, buffer_length);
 	*j = 0;
 }
 
 static void	assign_char_to_buf(char *buf, char *format, int *j, int i)
 {
 	buf[*j] = format[i];
-	*j = *j + 1;
+	*j += 1;
 }
 
 static void	assign_int_zero(int *i, char *str, t_flags **data)
@@ -49,20 +49,21 @@ int			buff_management(char *format, va_list list)
 	t_flags	*data;
 	char	buf[BUF_SIZE + 1];
 	int		i[3];
+	int		buffer_length;
 
+	buffer_length = 0;
 	assign_int_zero(&i[0], buf, &data);
 	while (format[i[0]] != '\0')
 	{
 		if (i[1] == BUF_SIZE)
-			reset_j(&i[1], &i[2], buf);
+			reset_j(&i[1], &i[2], buf, &buffer_length);
 		if (format[i[0]] == '%' && format[i[0] + 1])
 		{
 			data = get_string_to_print(list, (const char *)&format[i[0]]);
 			if (!data)
 				break ;
-			i[0]++;
 			i[1] = (i[1] + (LEN)) % BUF_SIZE;
-			i[2] += put_on_buf(buf, data->result, &i[2], (LEN));
+			i[2] += put_on_buf(buf, data, &i[2], (LEN), &buffer_length);
 			i[0] += ft_search_until_specifier(&format[i[0]], data);
 			free_data(&data);
 		}
@@ -70,5 +71,5 @@ int			buff_management(char *format, va_list list)
 			assign_char_to_buf(buf, format, &i[1], i[0]);
 		i[0]++;
 	}
-	return (i[2] += print_buf_nf(buf, i[1], data));
+	return (i[2] += print_buf_nf(buf, i[1], data, &buffer_length));
 }

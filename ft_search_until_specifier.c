@@ -6,7 +6,7 @@
 /*   By: rcorke <rcorke@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/26 17:23:26 by rcorke         #+#    #+#                */
-/*   Updated: 2019/04/30 16:49:47 by rcorke        ########   odam.nl         */
+/*   Updated: 2019/05/03 20:45:53 by rcorke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int		ft_search_until_specifier(char *str, t_flags *data)
 		return (0);
 	terminating_char = data->specifier;
 	i = 0;
+	if (str[0] == '%')
+		i++;
 	while (str[i] && str[i] != terminating_char)
 		i++;
 	return (i);

@@ -6,13 +6,13 @@
 /*   By: rcorke <rcorke@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/03 13:33:50 by kpereira       #+#    #+#                */
-/*   Updated: 2019/05/02 19:16:43 by rcorke        ########   odam.nl         */
+/*   Updated: 2019/05/03 20:36:06 by rcorke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# define BUF_SIZE 32
+# define BUF_SIZE 4096
 # define LEN (data->len >= 1 ? data->len : ft_strlen(data->result))
 
 # define FLAGSTRING			"+-# 0"
@@ -131,9 +131,9 @@ int					ft_search_until_specifier(char *str, t_flags *data);
 int					find_wildcard_in_string(char *str);
 char				*make_width_null(t_flags *data);
 void				clear_buf(char *buf);
-int					print_buf(char *buf);
-int					print_buf_nf(char *buf, int j, t_flags *data);
-int					put_on_buf(char *buf, char *str, int *rtn, int len);
+int					print_buf(char *buf, int *buffer_length);
+int					print_buf_nf(char *buf, int j, t_flags *data, int *buffer_length);
+int					put_on_buf(char *buf, t_flags *data, int *rtn, int len, int *buffer_length);
 char				*ft_unsigned_long_long_itoa(unsigned long long int n);
 void				width_path_flags(t_flags *data, char *rtn);
 void				width_fzero_path(char *str, int width, char *rtn);

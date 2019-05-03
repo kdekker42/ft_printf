@@ -6,7 +6,7 @@
 /*   By: rcorke <rcorke@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/09 11:30:14 by kpereira       #+#    #+#                */
-/*   Updated: 2019/05/02 20:01:20 by rcorke        ########   odam.nl         */
+/*   Updated: 2019/05/03 20:58:18 by rcorke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ t_flags		*get_string_to_print(va_list list, const char *percent)
 	if (!data)
 		return (0);
 	send_struct_to_solve(data, list);
-	printf("data->width: %d\tdata->flags: %d\tdata->precision: %d\tdata->length: %i\tdata->specifier: %c\tdata->result: %s\n", \
-	data->width, data->flags, data->precision, data->length, data->specifier, data->result);
 	return (data);
 }
 

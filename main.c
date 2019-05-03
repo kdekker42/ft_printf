@@ -6,7 +6,7 @@
 /*   By: rcorke <rcorke@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/02 15:58:03 by rcorke         #+#    #+#                */
-/*   Updated: 2019/05/02 20:47:16 by rcorke        ########   odam.nl         */
+/*   Updated: 2019/05/03 20:31:08 by rcorke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,17 @@ int main(void)
 {
 	int ft_value;
 	int printf_value;
-	int f = 52522;
-	int p = 52522;
+	// int f = 52522;
+	// int p = 52522;
 
+
+
+	ft_value = ft_printf("titi % +---12.5% et%%%0004% et %+1%");
+	printf("\t%d\n", ft_value);
+	printf_value = printf("titi % +---12.5% et%%%0004% et %+1%");
+	printf("\t%d\n", printf_value);
 
 //	printf("data->width: %d\tdata->flags: %c\tdata->precision: %d\tdata->length: %i\tdata->specifier: %c\tdata->result: %s\n", \
 	data->width, data->flags, data->precision, data->length, data->specifier, data->result);
-
-	ft_value = ft_printf("hello ca%----4c %1c va %10c%-c ??", '\0', '\n', (char)564, 0);
-	printf("\tvalue: %d\n\n", ft_value);
-	printf_value = printf("hello ca%----4c %1c va %10c%-c ??", '\0', '\n', (char)564, 0);
-	printf("\tvalue: %d\n\n", printf_value);
 //	while(1);
 }

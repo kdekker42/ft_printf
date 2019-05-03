@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   char_path.c                                        :+:    :+:            */
+/*   path_char.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rcorke <rcorke@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/11 15:58:35 by rcorke         #+#    #+#                */
-/*   Updated: 2019/04/28 16:43:18 by rcorke        ########   odam.nl         */
+/*   Updated: 2019/05/03 20:00:32 by rcorke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	char_path(t_flags *data, va_list list)
 	if (!storage)
 	{
 		data->precision = -21;
-		data->result = ft_strnew(1);
+		data->result = ft_strnew(0);
 		data->len = (data->width < 1) ? 1 : data->width;
 		data->width -= 1;
 	}

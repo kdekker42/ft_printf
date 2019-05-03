@@ -6,7 +6,7 @@
 /*   By: rcorke <marvin@codam.nl>                     +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 17:26:49 by rcorke         #+#    #+#                */
-/*   Updated: 2019/05/02 20:46:31 by rcorke        ########   odam.nl         */
+/*   Updated: 2019/05/03 20:52:48 by rcorke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ static void		width_path_normal(t_flags *data, char *rtn)
 {
 	if ((data->flags & 4) == 4)
 		width_min_path(data->result, data->width, rtn);
-	else if ((data->flags & 1) == 1 && data->precision < 0 && data->result[0] != '\0')
+	else if ((data->flags & 1) == 1 && data->precision < 0 && \
+	data->result[0] != '\0')
 		width_zero_path(data->result, data->width, rtn);
 	else
 		width_nothing(data->result, data->width, rtn);

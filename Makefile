@@ -6,7 +6,7 @@
 #    By: rcorke <rcorke@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/09 18:10:06 by rcorke         #+#    #+#                 #
-#    Updated: 2019/05/02 19:15:53 by rcorke        ########   odam.nl          #
+#    Updated: 2019/05/03 20:31:47 by rcorke        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,17 +29,17 @@ FLAGS= -Wall -Wextra -Werror
 
 all: $(NAME)
 
-# $(NAME):
-# 	@echo making printf libft...
-# 	@make re -C libft/
-# 	@mv ./libft/libft.a $(NAME)
-# 	@gcc $(FLAGS) -I./ -c $(SOURCES)
-# 	@ar rc $(NAME) $(OBJECTS)
-# 	@ranlib $(NAME)
-
 $(NAME):
-	make re -C libft/
-	gcc -I./ $(SOURCES) main.c libft/libft.a
+	@echo making printf libft...
+	@make re -C libft/
+	@mv ./libft/libft.a $(NAME)
+	@gcc $(FLAGS) -I./ -c $(SOURCES)
+	@ar rc $(NAME) $(OBJECTS)
+	@ranlib $(NAME)
+
+# $(NAME):
+# 	make re -C libft/
+# 	gcc -Wall -Wextra -I./ $(SOURCES) main.c libft/libft.a
 
 clean:
 	@make clean -C libft/
@@ -56,3 +56,4 @@ poop:
 
 pee:
 	@echo pee
+	
