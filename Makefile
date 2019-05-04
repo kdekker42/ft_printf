@@ -6,7 +6,7 @@
 #    By: rcorke <rcorke@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/09 18:10:06 by rcorke         #+#    #+#                 #
-#    Updated: 2019/05/03 20:31:47 by rcorke        ########   odam.nl          #
+#    Updated: 2019/05/04 19:24:57 by rcorke        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,10 +37,6 @@ $(NAME):
 	@ar rc $(NAME) $(OBJECTS)
 	@ranlib $(NAME)
 
-# $(NAME):
-# 	make re -C libft/
-# 	gcc -Wall -Wextra -I./ $(SOURCES) main.c libft/libft.a
-
 clean:
 	@make clean -C libft/
 	@rm -rf *~ $(OBJECTS)
@@ -52,8 +48,7 @@ fclean: clean
 re: fclean all
 
 poop:
-	@echo poop
+	@yes poop
 
 pee:
-	@echo pee
-	
+	@yes pee

@@ -6,7 +6,7 @@
 /*   By: rcorke <rcorke@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 15:34:03 by rcorke         #+#    #+#                */
-/*   Updated: 2019/05/03 21:10:13 by rcorke        ########   odam.nl         */
+/*   Updated: 2019/05/04 14:58:32 by rcorke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,29 +60,29 @@ static int	find_strlength_null_string(char *buf, int backslashes)
 	return (x);
 }
 
-int			put_on_buf(char *buf, t_flags *data, int *rtn, int len, int *buffer_length)
+int			put_on_buf(char *buf, t_flags *data, int *integers, int len)
 {
 	int		i;
 	int		j;
 
 	j = 0;
-	i = find_strlength_null_string(buf, *buffer_length);
+	i = find_strlength_null_string(buf, integers[3]);
 	while (j < len)
 	{
 		if (i < BUF_SIZE)
-		{	
+		{
 			buf[i] = data->result[j];
 			j++;
 			i++;
 		}
 		if (i == BUF_SIZE)
 		{
-			*rtn += print_buf(buf, buffer_length);
+			integers[2] += print_buf(buf, &integers[3]);
 			i = 0;
 		}
 	}
 	if (data->specifier == 'c' && data->precision == -21)
-		(*buffer_length)++;
+		integers[3]++;
 	ft_strdel(&data->result);
 	return (0);
 }

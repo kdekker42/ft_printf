@@ -6,7 +6,7 @@
 /*   By: rcorke <marvin@codam.nl>                     +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 17:26:49 by rcorke         #+#    #+#                */
-/*   Updated: 2019/05/03 20:52:48 by rcorke        ########   odam.nl         */
+/*   Updated: 2019/05/04 14:42:58 by rcorke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ char			*make_width(t_flags *data)
 			width_path_flags(data, rtn);
 		else
 		{
-
 			if (data->specifier == 's')
 				width_path_string(data, rtn);
 			else
